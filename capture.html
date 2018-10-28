@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="capture.css">
+</head>
+
+<body>
+  <div class="container">
+      <div class="contentarea">
+          <h1>WebRTC: Still photo capture demo</h1>
+          <p>built-in camera, fetch image from camera stream and create png from that image</p>
+        </div>
+        <div class="media">
+          <div class="camera">
+            <video id="video">Stream not available</video>
+            <button id="startupbutton">Take photo</button>
+          </div>
+          <canvas id="canvas"></canvas>
+          <div class="output">
+            <img alt="The screen capture will appear here" id="photo">
+          </div>
+        </div>
+  </div>
+  <script src="capture.js"></script>
+</body>
+
+</html>

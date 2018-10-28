@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="scripts/semantic-ui-css/semantic.min.css">
+  <title>WebRTC app</title>
+  <style>
+
+    body{
+      margin-top: 30px;
+    }
+  
+  </style>
+</head>
+
+<body>
+  <div class="ui container">
+    <h1 class="ui header">Simple WebRTC Messenger</h1>
+    <hr>
+    <div class="ui two column stackable grid" style="margin-top:20px">
+      <div class="ui ten wide column">
+        <div class="ui segment">
+          <div class="ui form">
+            <div class="fields">
+              <div class="field">
+                <label for="username">User name</label>
+                <input type="text" name="username" id="username" placeholder="Enter user name">
+              </div>
+              <div class="field">
+                <label for="roomName">Room name</label>
+                <input type="text" name="roomName" id="roomName" placeholder="Enter room name">
+              </div>
+            </div>
+            <br>
+            <div class="ui buttons">
+              <div id="create-btn" class="ui submit orange button">Create room</div>
+              <div class="or"></div>
+              <div id="join-btn" class="ui submit green button">Join room</div>
+            </div>
+          </div>
+          <div id="chat"></div>
+        </div>
+      </div>
+      <div class="ui six wide column">
+        <h4 class="ui center aligned header" style="margin:0">Local camera</h4>
+        <img src="images/image.png" alt="" id="local-image" class="ui large image">
+        <video id="local-video" class="ui large image hidden" autoplay></video>
+      </div>
+    </div>
+    <h3 class="ui cente4 aligned header">Remote cameras</h3>
+    <div id="remote-videos" class="ui stackable grid">
+      <div class="four wide column"><img src="images/image.png" alt="" class="ui centered medium image"></div>
+      <div class="four wide column"><img src="images/image.png" alt="" class="ui centered medium image"></div>
+      <div class="four wide column"><img src="images/image.png" alt="" class="ui centered medium image"></div>
+      <div class="four wide column"><img src="images/image.png" alt="" class="ui centered medium image"></div>
+    </div>
+  </div>
+
+  <script id="chat-template" type="text/x-handlebars-template">
+    <h3 class="ui orange header">RoomID -> <strong>{{room}}</strong></h3>
+  <hr>
+  <div class="chat-content ui feed"></div>
+  <hr>
+  <div class="ui form">
+    <div class="ui field">
+      <label for="post-message">Post message</label>
+      <textarea name="post-message" id="post-message"  rows="1"></textarea>
+    </div>
+    <div id="post-btn" class="ui priamry submit button">Send</div>
+  </div>
+  </script>
+  <script id="chat-content-template" type="text/x-handlebars-template">
+    {{#each messages}}
+      <div class="event">
+          <div class="label">
+            <i class="icon blue user"></i>
+          </div>
+          <div class="content">
+            <div class="summary">
+              <a href="#">{{username}}</a> posted on
+              <div class="date">
+                {{postedOn}}
+              </div>
+            </div>
+            <div class="extra text">
+              {{message}}
+            </div>
+          </div>
+        </div>
+    {{/each}}
+  </script>
+  <script id="remote-video-template" type="text/x-handlebars-template">
+    <div id="{{ id }}" class="four wide column"></div>
+  </script>
+  <script src="scripts/jquery/dist/jquery.min.js"></script>
+  <script src="scripts/semantic-ui-css/semantic.min.js"></script>
+  <script src="scripts/handlebars/dist/handlebars.min.js"></script>
+  <script src="scripts/simplewebrtc/out/simplewebrtc-with-adapter.bundle.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
